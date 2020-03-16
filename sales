@@ -9,12 +9,13 @@ public class Sale {
 	public static void main(String[] args) throws FileNotFoundException {
 		
 			try {
+			//creat output text files for each service type
 			PrintWriter dinner = new PrintWriter("Dinner.txt");
 			PrintWriter lodging = new PrintWriter("Lodging.txt");
 			PrintWriter conference = new PrintWriter("Conference.txt");
-
+			
+			//read input text file
 			File inputFile = new File("sales.txt");
-			//File inputFile = new File("not.txt");
 			Scanner in = new Scanner(inputFile);
 			while(in.hasNextLine()) {
 			
