@@ -36,9 +36,7 @@ public class Sale {
 			PrintWriter dinner = new PrintWriter(outputFile1);
 			PrintWriter lodging = new PrintWriter(outputFile2);
 			PrintWriter conference = new PrintWriter(outputFile3);
-
 			
-			//File inputFile = new File("not.txt");
 			Scanner in = new Scanner(inputFile);
 			while(in.hasNextLine()) {
 			
