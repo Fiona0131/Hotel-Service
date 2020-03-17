@@ -15,13 +15,15 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+
 public class Sale {
+
 	public static void main(String[] args) throws FileNotFoundException {
 		
 			try {
-			if (args.length!=3) {
-				throw new ArrayIndexOutOfBoundsException();
-			}
+				if (args.length!=3) {
+				throw new ArrayIndexOutOfBoundsException();}
+			
 				
 			String out1 = args[0];
 			String out2 = args[1];
@@ -36,12 +38,13 @@ public class Sale {
 			PrintWriter dinner = new PrintWriter(outputFile1);
 			PrintWriter lodging = new PrintWriter(outputFile2);
 			PrintWriter conference = new PrintWriter(outputFile3);
+
 			
 			Scanner in = new Scanner(inputFile);
 			while(in.hasNextLine()) {
 			
 			String line = in.nextLine();
-			String[] details =  line.split(";");
+			String[] details =  line.split(";");//each phrase between ";" is an element of the string details array
 			
 			
 			//Dinner Output
@@ -71,11 +74,14 @@ public class Sale {
 		 System.out.println("\n Data has been processed and output has been written to respective files.... \n");
 		}//end try
 		catch(FileNotFoundException e) {
-			System.out.println("File does not exist.");
+			System.out.println("File does not exist!");
 		}
 		catch(ArrayIndexOutOfBoundsException e) {
 				System.out.print("Enter 3 arguments!");
 		}
+		catch(Exception message) {
+				System.out.println("Unknown transaction!");
+			}
 			
 	}
 }//end class
