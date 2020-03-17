@@ -1,0 +1,88 @@
+/**
+ * @author Fiona Le
+ * @author Stephanie Lim
+ * 
+ * March 16, 2020
+ *
+ * 
+ * Purpose: This program is to read the text file of sales which is created in the part I of the project.
+ * Output: 3 text files for each service category(Dinner, Lodging, Conference)
+ * 
+ */
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+
+public class Sale {
+
+
+	
+
+	public static void main(String[] args) throws FileNotFoundException {
+		
+			try {
+			if (args.length!=3) {
+				throw new ArrayIndexOutOfBoundsException();
+			}
+				
+			String out1 = args[0];
+			String out2 = args[1];
+			String out3 = args[2];
+			
+			File outputFile1 = new File(out1);
+			File outputFile2 = new File(out2);
+			File outputFile3 = new File(out3);
+			File inputFile = new File("sales.txt");
+			
+			
+			PrintWriter dinner = new PrintWriter(outputFile1);
+			PrintWriter lodging = new PrintWriter(outputFile2);
+			PrintWriter conference = new PrintWriter(outputFile3);
+
+			
+			//File inputFile = new File("not.txt");
+			Scanner in = new Scanner(inputFile);
+			while(in.hasNextLine()) {
+			
+			String line = in.nextLine();
+			String[] details =  line.split(";");
+			
+			
+			//Dinner Output
+			if(details[1].equals("Dinner")) {
+				dinner.println(details[0]+";"+details[1]+";"+details[2]+";"+details[3]);
+				
+			}
+			//Lodging Output
+			else if (details[1].equals("Lodging")) {
+				lodging.println(details[0]+";"+details[1]+";"+details[2]+";"+details[3]);
+				
+			}
+			//Conference Output
+			else if (details[1].equals("Conference")) {
+				conference.println(details[0]+";"+details[1]+";"+details[2]+";"+details[3]);
+				
+			}
+			
+		}//end while
+		
+		 in.close();
+		
+		 dinner.close();
+		 lodging.close();
+		 conference.close();
+		 
+		 System.out.println("\n Data has been processed and output has been written to respective files.... \n");
+		}//end try
+		catch(FileNotFoundException e) {
+			System.out.println("File does not exist.");
+		}
+		catch(ArrayIndexOutOfBoundsException e) {
+				System.out.print("Enter 3 arguments!");
+		}
+			
+	}
+}//end class
